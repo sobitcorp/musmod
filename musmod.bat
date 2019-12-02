@@ -74,12 +74,12 @@ if "%cfg%"=="" (
 	echo No configuration file found^^! Make sure a .csv file exists in this folder.
 	goto end
 )
-if not exist "%cfg%" (
-	echo Configuration file %cfg% does not exist^^!
+if not exist "!cfg!" (
+	echo Configuration file !cfg! does not exist^^!
 	goto end
 )
-echo Loading configuration %cfg%...
-for /f "usebackq tokens=* delims=," %%i in ("%cfg%") do (
+echo Loading configuration !cfg!...
+for /f "usebackq tokens=* delims=," %%i in ("!cfg!") do (
 	set l=%%i
 	set l=!l: =`!
 	if "!l:~0,1!"=="$" goto loadok
@@ -217,7 +217,7 @@ set /a ctna=0
 set /a ctnb=0
 set /a cto=0
 set m=0
-for /f "usebackq tokens=* delims=," %%i in ("%cfg%") do (
+for /f "usebackq tokens=* delims=," %%i in ("!cfg!") do (
 	set l=%%i
 	set l=!l: =`!
 rem	set xx=
@@ -328,7 +328,7 @@ set k=0
 set m=0
 set ta=
 set tb=
-for /f "usebackq tokens=* delims=," %%i in ("%cfg%") do (
+for /f "usebackq tokens=* delims=," %%i in ("!cfg!") do (
 	set l=%%i
 	set l=!l: =`!
 	if !m!==1 (
